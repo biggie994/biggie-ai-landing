@@ -207,6 +207,55 @@ export default function App() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section className="py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            className="text-center max-w-2xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-sm font-bold text-gray-500 tracking-widest uppercase mb-3">Portfolio</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              AI가 바꾸는 세상의 모습
+            </h3>
+            <p className="text-slate-600 text-lg">
+              기술이 만들어가는 새로운 시각과 가능성을 함께 탐험합니다.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+            {[
+              { src: "/images/img1.png", alt: "도시와 문명" },
+              { src: "/images/img2.png", alt: "자연의 신비" },
+              { src: "/images/img3.png", alt: "청정 자연" },
+              { src: "/images/img4.png", alt: "장엄한 피오르" },
+            ].map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="relative overflow-hidden rounded-2xl aspect-video group"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="absolute bottom-4 left-4 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0 transition-transform">
+                  {img.alt}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-32 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
